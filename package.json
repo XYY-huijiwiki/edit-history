@@ -1,0 +1,25 @@
+{
+  "name": "edit-history",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vueuse/core": "^13.9.0",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vue": "^3.5.18",
+    "vue-shadow-dom": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.21",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.7.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2",
+    "vue-tsc": "^3.0.5"
+  }
+}
