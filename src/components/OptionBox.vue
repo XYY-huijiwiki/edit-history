@@ -1,7 +1,7 @@
 <template>
   <shadow-root>
     <fieldset>
-      <legend>Filter</legend>
+      <legend>筛选</legend>
       <label v-for="checkbox in checkboxes" :key="'checkbox-' + checkbox.value">
         <input
           type="checkbox"
@@ -13,30 +13,30 @@
       </label>
     </fieldset>
     <fieldset>
-      <legend>Options</legend>
+      <legend>选项</legend>
       <div>
-        Load
-        <select v-model="options.limit">
+        每次加载<select v-model="options.limit">
           <option
             v-for="item in menuItems"
             :key="item.value"
             :value="item.value"
           >
             {{ item.label || item.value }}
-          </option>
-        </select>
-        items per time.
+          </option></select
+        >条数据。
       </div>
       <div>
-        Mark myself (
-        <input type="text" v-model="options.my_name" style="width: 8em" />
-        ) as reviewed automatically. Leave empty to disable.
+        自动将自己（<input
+          type="text"
+          v-model="options.my_name"
+          style="width: 8em"
+        />）的操作标记为已检查。留空则禁用。
       </div>
       <div>
         <button @click="$emit('reset')" type="button" style="cursor: pointer">
-          Reset
+          重置
         </button>
-        all options. This removes reviewed marks as well.
+        所有选项。这也会清空已检查标记。
       </div>
     </fieldset>
   </shadow-root>

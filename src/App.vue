@@ -19,9 +19,8 @@ const options = useLocalStorage<Options>(
   defaultOptions
 );
 function resetOptions() {
-  confirm(
-    "Are you sure you want to reset all options? This will also remove all reviewed marks."
-  ) && (options.value = defaultOptions);
+  confirm("确定要重置所有选项吗？这也会清空已检查标记。") &&
+    (options.value = defaultOptions);
 }
 
 const continueToken = ref<Record<string, string> | null>(null);
@@ -79,7 +78,7 @@ async function loadNewerChanges() {
     const newChanges = data.query.recentchanges as RecentChange[];
 
     if (newChanges.length === 0) {
-      alert("No new changes found.");
+      alert("没有发现新更改。");
       return;
     }
 
@@ -205,7 +204,7 @@ function markMyEditsAsReviewed(rawChanges: RecentChange[]) {
     @reset="resetOptions"
   />
 
-  <div v-if="error" class="error mt-4 font-bold">Error: {{ error }}</div>
+  <div v-if="error" class="error mt-4 font-bold">出错: {{ error }}</div>
   <div
     v-else
     class="border-4 border-[var(--divider-on-surface)] rounded p-4 mb-4 mt-4"
@@ -215,7 +214,7 @@ function markMyEditsAsReviewed(rawChanges: RecentChange[]) {
       :disabled="loadingNewer || !newestTimestamp"
       class="mdui-btn mdui-btn-raised mdui-color- mdui-btn-dense bg-primary mb-4"
     >
-      {{ loadingNewer ? "Checking..." : "Check for New Changes" }}
+      {{ loadingNewer ? "加载中……" : "检查新更改" }}
     </button>
     <hr class="!m-0" />
 
@@ -281,7 +280,7 @@ function markMyEditsAsReviewed(rawChanges: RecentChange[]) {
       :disabled="loading || !hasOlderChanges"
       class="mdui-btn mdui-btn-raised mdui-color- mdui-btn-dense bg-primary"
     >
-      {{ loading ? "Loading..." : "Load Older Changes" }}
+      {{ loading ? "加载中……" : "加载更早的更改" }}
     </button>
   </div>
 </template>

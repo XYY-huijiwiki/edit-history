@@ -1,0 +1,27 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install
+      - name: Build project
+        run: bun run build
+      - name: Deploy to Wiki
+        run: bun ./scripts/deploy.js
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          BOT_USERNAME: ${{ secrets.BOT_USERNAME }}
+          BOT_PASSWORD: ${{ secrets.BOT_PASSWORD }}

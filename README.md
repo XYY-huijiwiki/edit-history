@@ -2,6 +2,8 @@
 
 > A fast alternative to 'Special:RecentChanges' on Wikimedia based sites.
 
+> [!IMPORTANT] This is an early prototype. It is not yet ready for any real use.
+
 ## Development
 
 1. Install dependencies:
